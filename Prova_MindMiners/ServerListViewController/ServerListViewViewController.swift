@@ -82,7 +82,6 @@ class ServerListViewViewController: UIViewController, ServerListViewDisplayLogic
     }
     
     @objc func addServer() {
-        
         var newServer: Server = Server(name: nil, status: nil)
         
         let alertController = UIAlertController(title: "Adicionar Servidor", message: nil, preferredStyle: .alert)
@@ -94,7 +93,7 @@ class ServerListViewViewController: UIViewController, ServerListViewDisplayLogic
             newServer.name = alertController.textFields?[0].text
             newServer.status = "Indisponivel"
             
-            if let _ = newServer.name {
+            if newServer.name != "" {
                 self.servers.append(newServer)
                 self.tableview?.reloadData()
             }
@@ -122,6 +121,20 @@ extension ServerListViewViewController: UITableViewDelegate, UITableViewDataSour
         cell.serverStatusLabel?.text = servers[indexPath.row].status
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let alertController = UIAlertController(title: "Remover Servidor", message: nil, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Remover", style: .default, handler: { (_) in
+            
+            self.servers.remove(at: indexPath.row)
+            self.tableview?.deleteRows(at: [indexPath], with: .automatic)
+        }))
+        self.present(alertController, animated: true, completion: nil)
+        
     }
 }
 
