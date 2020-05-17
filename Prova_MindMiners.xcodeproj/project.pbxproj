@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4342B2D52471C53A006B02A4 /* Reflexão.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4342B2D42471C53A006B02A4 /* Reflexão.swift */; };
+		439C48522471BF5500DD55AF /* ServerListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439C48502471BF5500DD55AF /* ServerListTableViewCell.swift */; };
+		439C48532471BF5500DD55AF /* ServerListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 439C48512471BF5500DD55AF /* ServerListTableViewCell.xib */; };
 		43A1FC8024716B2A002452B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A1FC7F24716B2A002452B8 /* AppDelegate.swift */; };
 		43A1FC8224716B2A002452B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A1FC8124716B2A002452B8 /* SceneDelegate.swift */; };
 		43A1FC8924716B2D002452B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43A1FC8824716B2D002452B8 /* Assets.xcassets */; };
@@ -16,9 +19,13 @@
 		43A1FC9C2471A581002452B8 /* ServerListViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A1FC972471A581002452B8 /* ServerListViewModels.swift */; };
 		43A1FC9D2471A581002452B8 /* ServerListViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A1FC982471A581002452B8 /* ServerListViewViewController.swift */; };
 		43A1FC9E2471A581002452B8 /* ServerListViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A1FC992471A581002452B8 /* ServerListViewInteractor.swift */; };
+		43A1FCA12471A83C002452B8 /* ServerListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43A1FCA02471A83C002452B8 /* ServerListViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4342B2D42471C53A006B02A4 /* Reflexão.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reflexão.swift"; sourceTree = "<group>"; };
+		439C48502471BF5500DD55AF /* ServerListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListTableViewCell.swift; sourceTree = "<group>"; };
+		439C48512471BF5500DD55AF /* ServerListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServerListTableViewCell.xib; sourceTree = "<group>"; };
 		43A1FC7C24716B2A002452B8 /* Prova_MindMiners.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prova_MindMiners.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43A1FC7F24716B2A002452B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43A1FC8124716B2A002452B8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +37,7 @@
 		43A1FC972471A581002452B8 /* ServerListViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListViewModels.swift; sourceTree = "<group>"; };
 		43A1FC982471A581002452B8 /* ServerListViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListViewViewController.swift; sourceTree = "<group>"; };
 		43A1FC992471A581002452B8 /* ServerListViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListViewInteractor.swift; sourceTree = "<group>"; };
+		43A1FCA02471A83C002452B8 /* ServerListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServerListViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +51,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		439C48542471BF6400DD55AF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				439C48502471BF5500DD55AF /* ServerListTableViewCell.swift */,
+				439C48512471BF5500DD55AF /* ServerListTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		43A1FC7324716B2A002452B8 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +79,7 @@
 		43A1FC7E24716B2A002452B8 /* Prova_MindMiners */ = {
 			isa = PBXGroup;
 			children = (
+				4342B2D42471C53A006B02A4 /* Reflexão.swift */,
 				43A1FC7F24716B2A002452B8 /* AppDelegate.swift */,
 				43A1FC8124716B2A002452B8 /* SceneDelegate.swift */,
 				43A1FC9F2471A587002452B8 /* ServerListViewController */,
@@ -75,11 +93,13 @@
 		43A1FC9F2471A587002452B8 /* ServerListViewController */ = {
 			isa = PBXGroup;
 			children = (
+				43A1FC982471A581002452B8 /* ServerListViewViewController.swift */,
+				43A1FCA02471A83C002452B8 /* ServerListViewController.xib */,
 				43A1FC952471A581002452B8 /* ServerListViewPresenter.swift */,
 				43A1FC962471A581002452B8 /* ServerListViewWorker.swift */,
 				43A1FC972471A581002452B8 /* ServerListViewModels.swift */,
-				43A1FC982471A581002452B8 /* ServerListViewViewController.swift */,
 				43A1FC992471A581002452B8 /* ServerListViewInteractor.swift */,
+				439C48542471BF6400DD55AF /* Cell */,
 			);
 			path = ServerListViewController;
 			sourceTree = "<group>";
@@ -142,7 +162,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43A1FCA12471A83C002452B8 /* ServerListViewController.xib in Resources */,
 				43A1FC8C24716B2D002452B8 /* LaunchScreen.storyboard in Resources */,
+				439C48532471BF5500DD55AF /* ServerListTableViewCell.xib in Resources */,
 				43A1FC8924716B2D002452B8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,10 +178,12 @@
 			files = (
 				43A1FC9B2471A581002452B8 /* ServerListViewWorker.swift in Sources */,
 				43A1FC9E2471A581002452B8 /* ServerListViewInteractor.swift in Sources */,
+				4342B2D52471C53A006B02A4 /* Reflexão.swift in Sources */,
 				43A1FC8024716B2A002452B8 /* AppDelegate.swift in Sources */,
 				43A1FC9D2471A581002452B8 /* ServerListViewViewController.swift in Sources */,
 				43A1FC9A2471A581002452B8 /* ServerListViewPresenter.swift in Sources */,
 				43A1FC8224716B2A002452B8 /* SceneDelegate.swift in Sources */,
+				439C48522471BF5500DD55AF /* ServerListTableViewCell.swift in Sources */,
 				43A1FC9C2471A581002452B8 /* ServerListViewModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

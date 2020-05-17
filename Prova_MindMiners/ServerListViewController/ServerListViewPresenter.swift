@@ -12,14 +12,16 @@
 
 import UIKit
 
+//MARK: - Protocol
 protocol ServerListViewPresentationLogic {
     func presentSomething(response: ServerListView.Something.Response)
 }
 
+//MARK: - Class
 class ServerListViewPresenter: ServerListViewPresentationLogic {
     weak var viewController: ServerListViewDisplayLogic?
     
-    // MARK: Do something
+    //MARK: - Do something
     
     func presentSomething(response: ServerListView.Something.Response) {
         let viewModel = ServerListView.Something.ViewModel()

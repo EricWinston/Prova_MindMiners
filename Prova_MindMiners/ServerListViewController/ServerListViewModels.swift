@@ -12,6 +12,12 @@
 
 import UIKit
 
+public struct Server {
+    public var name : String?
+    public var status : String?
+}
+
+
 enum ServerListView {
     // MARK: Use cases
     

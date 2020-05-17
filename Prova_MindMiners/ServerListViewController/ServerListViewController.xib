@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ServerListViewViewController" customModule="Prova_MindMiners" customModuleProvider="target">
+            <connections>
+                <outlet property="navigation" destination="yRN-bC-9dj" id="aey-ma-YEf"/>
+                <outlet property="tableview" destination="WFB-4z-rKJ" id="XQH-JU-llu"/>
+                <outlet property="view" destination="Or6-ja-uIE" id="xpw-Qu-Lyd"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Or6-ja-uIE">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yRN-bC-9dj">
+                    <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="4qt-1B-SHs"/>
+                    </constraints>
+                    <color key="barTintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <items>
+                        <navigationItem title="Title" id="MT9-K5-7Hg"/>
+                    </items>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="barPosition">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="Hsg-LK-waI"/>
+                    </connections>
+                </navigationBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WFB-4z-rKJ">
+                    <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="bY9-fR-F0i"/>
+                        <outlet property="delegate" destination="-1" id="1MC-GV-Vby"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="WFB-4z-rKJ" firstAttribute="leading" secondItem="vqS-mh-p7Z" secondAttribute="leading" id="03I-t5-N5V"/>
+                <constraint firstItem="yRN-bC-9dj" firstAttribute="top" secondItem="vqS-mh-p7Z" secondAttribute="top" id="I8K-uw-qRa"/>
+                <constraint firstItem="yRN-bC-9dj" firstAttribute="leading" secondItem="vqS-mh-p7Z" secondAttribute="leading" id="J35-vv-np9"/>
+                <constraint firstItem="vqS-mh-p7Z" firstAttribute="trailing" secondItem="yRN-bC-9dj" secondAttribute="trailing" id="KEs-cK-6tI"/>
+                <constraint firstItem="vqS-mh-p7Z" firstAttribute="trailing" secondItem="WFB-4z-rKJ" secondAttribute="trailing" id="RG0-e6-weW"/>
+                <constraint firstItem="WFB-4z-rKJ" firstAttribute="top" secondItem="yRN-bC-9dj" secondAttribute="bottom" id="VVM-ga-f8u"/>
+                <constraint firstItem="vqS-mh-p7Z" firstAttribute="bottom" secondItem="WFB-4z-rKJ" secondAttribute="bottom" id="hsx-5Z-wUh"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vqS-mh-p7Z"/>
+            <point key="canvasLocation" x="-21.739130434782609" y="-83.035714285714278"/>
+        </view>
+    </objects>
+</document>

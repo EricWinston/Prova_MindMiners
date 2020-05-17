@@ -12,16 +12,17 @@
 
 import UIKit
 
+//MARK: - Protocol
 protocol ServerListViewDisplayLogic: class {
     func displaySomething(viewModel: ServerListView.Something.ViewModel)
 }
 
+//MARK: - Class
 class ServerListViewViewController: UIViewController, ServerListViewDisplayLogic {
-
-    // MARK: - Setup
-
+    
+    //MARK: - Setup
     var interactor: ServerListViewBusinessLogic?
-
+    
     private func setup() {
         let viewController = self
         let interactor = ServerListViewInteractor()
@@ -30,42 +31,103 @@ class ServerListViewViewController: UIViewController, ServerListViewDisplayLogic
         interactor.presenter = presenter
         presenter.viewController = viewController
     }
-
-    // MARK: - Object lifecycle
-
+    
+    //MARK: - Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        super.init(nibName: "ServerListViewController", bundle: nibBundleOrNil)
         self.setup()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.setup()
     }
-
-    // MARK: - View lifecycle
-
+    
+    //MARK: - Variables
+    @IBOutlet var tableview: UITableView?
+    @IBOutlet var navigation: UINavigationBar?
+    
+    public var servers: [Server] = []
+    let refreshControl = UIRefreshControl()
+    
+    //MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigation?.delegate = self
+        let navItem = UINavigationItem(title: "Servidores")
+        let addItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: #selector(self.addServer))
+        addItem.tintColor = .black
+        navItem.rightBarButtonItem = addItem
+        navigation?.setItems([navItem], animated: false)
+        
+        self.tableview?.register(UINib(nibName: "ServerListTableViewCell", bundle: nil), forCellReuseIdentifier: "ServerListTableViewCell")
+        
+        
+        refreshControl.addTarget(self, action: #selector(self.reloadServers), for: .valueChanged)
+        self.tableview?.refreshControl = refreshControl
+        
         self.doSomething()
     }
-
-    // MARK: - Variables
-
-    //@IBOutlet weak var nameTextField: UITextField!
-
-    // MARK: - Fetch logic
-
+    
+    //MARK: - Fetch logic
     func doSomething() {
         let request = ServerListView.Something.Request()
         self.interactor?.doSomething(request: request)
     }
-
-    // MARK: - Display logic
-
+    
+    //MARK: - Display logic
     func displaySomething(viewModel: ServerListView.Something.ViewModel) {
         //nameTextField.text = viewModel.name
     }
+    
+    @objc func addServer() {
+        
+        var newServer: Server = Server(name: nil, status: nil)
+        
+        let alertController = UIAlertController(title: "Adicionar Servidor", message: nil, preferredStyle: .alert)
+        alertController.addTextField(configurationHandler: nil)
+        
+        alertController.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Adicionar", style: .default, handler: { (_) in
+            
+            newServer.name = alertController.textFields?[0].text
+            newServer.status = "Indisponivel"
+            
+            if let _ = newServer.name {
+                self.servers.append(newServer)
+                self.tableview?.reloadData()
+            }
+        }))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc func reloadServers(){
+        self.tableview?.reloadData()
+        self.refreshControl.endRefreshing()
+    }
+}
 
-    // MARK: - IBActionS
+extension ServerListViewViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return servers.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ServerListTableViewCell", for: indexPath) as? ServerListTableViewCell else {
+            fatalError("Invalid cell dequeue")
+        }
+        
+        cell.serverNameLabel?.text = servers[indexPath.row].name
+        cell.serverStatusLabel?.text = servers[indexPath.row].status
+        
+        return cell
+    }
+}
+
+
+extension ServerListViewViewController: UINavigationBarDelegate {
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return UIBarPosition.topAttached
+    }
 }
