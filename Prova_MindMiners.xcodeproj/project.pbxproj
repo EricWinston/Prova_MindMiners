@@ -14,11 +14,11 @@
 		43A1FC8224716B2A002452B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A1FC8124716B2A002452B8 /* SceneDelegate.swift */; };
 		43A1FC8924716B2D002452B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43A1FC8824716B2D002452B8 /* Assets.xcassets */; };
 		43A1FC8C24716B2D002452B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43A1FC8A24716B2D002452B8 /* LaunchScreen.storyboard */; };
-		43A1FC9A2471A581002452B8 /* ServerListViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A1FC952471A581002452B8 /* ServerListViewPresenter.swift */; };
-		43A1FC9B2471A581002452B8 /* ServerListViewWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A1FC962471A581002452B8 /* ServerListViewWorker.swift */; };
-		43A1FC9C2471A581002452B8 /* ServerListViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A1FC972471A581002452B8 /* ServerListViewModels.swift */; };
-		43A1FC9D2471A581002452B8 /* ServerListViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A1FC982471A581002452B8 /* ServerListViewViewController.swift */; };
-		43A1FC9E2471A581002452B8 /* ServerListViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A1FC992471A581002452B8 /* ServerListViewInteractor.swift */; };
+		43A1FC9A2471A581002452B8 /* ServerListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A1FC952471A581002452B8 /* ServerListPresenter.swift */; };
+		43A1FC9B2471A581002452B8 /* ServerListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A1FC962471A581002452B8 /* ServerListWorker.swift */; };
+		43A1FC9C2471A581002452B8 /* ServerListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A1FC972471A581002452B8 /* ServerListModels.swift */; };
+		43A1FC9D2471A581002452B8 /* ServerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A1FC982471A581002452B8 /* ServerListViewController.swift */; };
+		43A1FC9E2471A581002452B8 /* ServerListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A1FC992471A581002452B8 /* ServerListInteractor.swift */; };
 		43A1FCA12471A83C002452B8 /* ServerListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43A1FCA02471A83C002452B8 /* ServerListViewController.xib */; };
 /* End PBXBuildFile section */
 
@@ -32,11 +32,11 @@
 		43A1FC8824716B2D002452B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43A1FC8B24716B2D002452B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43A1FC8D24716B2D002452B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		43A1FC952471A581002452B8 /* ServerListViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListViewPresenter.swift; sourceTree = "<group>"; };
-		43A1FC962471A581002452B8 /* ServerListViewWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListViewWorker.swift; sourceTree = "<group>"; };
-		43A1FC972471A581002452B8 /* ServerListViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListViewModels.swift; sourceTree = "<group>"; };
-		43A1FC982471A581002452B8 /* ServerListViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListViewViewController.swift; sourceTree = "<group>"; };
-		43A1FC992471A581002452B8 /* ServerListViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListViewInteractor.swift; sourceTree = "<group>"; };
+		43A1FC952471A581002452B8 /* ServerListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListPresenter.swift; sourceTree = "<group>"; };
+		43A1FC962471A581002452B8 /* ServerListWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListWorker.swift; sourceTree = "<group>"; };
+		43A1FC972471A581002452B8 /* ServerListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListModels.swift; sourceTree = "<group>"; };
+		43A1FC982471A581002452B8 /* ServerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListViewController.swift; sourceTree = "<group>"; };
+		43A1FC992471A581002452B8 /* ServerListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListInteractor.swift; sourceTree = "<group>"; };
 		43A1FCA02471A83C002452B8 /* ServerListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServerListViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,12 +93,12 @@
 		43A1FC9F2471A587002452B8 /* ServerListViewController */ = {
 			isa = PBXGroup;
 			children = (
-				43A1FC982471A581002452B8 /* ServerListViewViewController.swift */,
+				43A1FC982471A581002452B8 /* ServerListViewController.swift */,
 				43A1FCA02471A83C002452B8 /* ServerListViewController.xib */,
-				43A1FC952471A581002452B8 /* ServerListViewPresenter.swift */,
-				43A1FC962471A581002452B8 /* ServerListViewWorker.swift */,
-				43A1FC972471A581002452B8 /* ServerListViewModels.swift */,
-				43A1FC992471A581002452B8 /* ServerListViewInteractor.swift */,
+				43A1FC952471A581002452B8 /* ServerListPresenter.swift */,
+				43A1FC962471A581002452B8 /* ServerListWorker.swift */,
+				43A1FC972471A581002452B8 /* ServerListModels.swift */,
+				43A1FC992471A581002452B8 /* ServerListInteractor.swift */,
 				439C48542471BF6400DD55AF /* Cell */,
 			);
 			path = ServerListViewController;
@@ -176,15 +176,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43A1FC9B2471A581002452B8 /* ServerListViewWorker.swift in Sources */,
-				43A1FC9E2471A581002452B8 /* ServerListViewInteractor.swift in Sources */,
+				43A1FC9B2471A581002452B8 /* ServerListWorker.swift in Sources */,
+				43A1FC9E2471A581002452B8 /* ServerListInteractor.swift in Sources */,
 				4342B2D52471C53A006B02A4 /* Reflexão.swift in Sources */,
 				43A1FC8024716B2A002452B8 /* AppDelegate.swift in Sources */,
-				43A1FC9D2471A581002452B8 /* ServerListViewViewController.swift in Sources */,
-				43A1FC9A2471A581002452B8 /* ServerListViewPresenter.swift in Sources */,
+				43A1FC9D2471A581002452B8 /* ServerListViewController.swift in Sources */,
+				43A1FC9A2471A581002452B8 /* ServerListPresenter.swift in Sources */,
 				43A1FC8224716B2A002452B8 /* SceneDelegate.swift in Sources */,
 				439C48522471BF5500DD55AF /* ServerListTableViewCell.swift in Sources */,
-				43A1FC9C2471A581002452B8 /* ServerListViewModels.swift in Sources */,
+				43A1FC9C2471A581002452B8 /* ServerListModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

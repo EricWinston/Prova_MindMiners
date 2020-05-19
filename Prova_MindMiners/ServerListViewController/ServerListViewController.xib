@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ServerListViewViewController" customModule="Prova_MindMiners" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ServerListViewController" customModule="Prova_MindMiners" customModuleProvider="target">
             <connections>
                 <outlet property="navigation" destination="yRN-bC-9dj" id="aey-ma-YEf"/>
                 <outlet property="tableview" destination="WFB-4z-rKJ" id="XQH-JU-llu"/>
