@@ -15,6 +15,7 @@ import UIKit
 //MARK: - Protocol
 protocol ServerListDisplayLogic: class {
     func showServers(viewModel: ServerList.LoadServer.ViewModel)
+    func showStatus(viewModel: ServerList.CheckStatus.ViewModel)
 }
 
 //MARK: - Class
@@ -47,7 +48,7 @@ class ServerListViewController: UIViewController, ServerListDisplayLogic {
     @IBOutlet var tableview: UITableView?
     @IBOutlet var navigation: UINavigationBar?
     
-    public var servers: [String] = []
+    public var servers: [Server] = []
     let refreshControl = UIRefreshControl()
     
     //MARK: - View lifecycle
@@ -63,6 +64,11 @@ class ServerListViewController: UIViewController, ServerListDisplayLogic {
         
         self.tableview?.register(UINib(nibName: "ServerListTableViewCell", bundle: nil), forCellReuseIdentifier: "ServerListTableViewCell")
         
+        let myTimer = Timer(timeInterval: 15, repeats: true, block: { (timer) in
+            self.loadStatus()
+        })
+        
+        RunLoop.main.add(myTimer, forMode: .common)
         
         refreshControl.addTarget(self, action: #selector(self.reloadServers), for: .valueChanged)
         self.tableview?.refreshControl = refreshControl
@@ -72,7 +78,7 @@ class ServerListViewController: UIViewController, ServerListDisplayLogic {
     
     //MARK: - Fetch logic
     func saveServers() {
-        let request = ServerList.SaveServer.Request(servers: servers)
+        let request = ServerList.SaveServer.Request(servers: self.servers)
         self.interactor?.saveServer(request: request)
     }
     
@@ -81,13 +87,23 @@ class ServerListViewController: UIViewController, ServerListDisplayLogic {
         self.interactor?.loadServer(request: request)
     }
     
+    func loadStatus() {
+        let request = ServerList.CheckStatus.Request(servers: self.servers)
+        self.interactor?.checkServerStatus(request: request)
+    }
+    
     //MARK: - Display logic
     func showServers(viewModel: ServerList.LoadServer.ViewModel) {
-        guard let servers = viewModel.servers else { return }
-        
-        self.servers = servers
+        self.servers = viewModel.servers ?? []
+        self.loadStatus()
         self.tableview?.reloadData()
     }
+    
+    func showStatus(viewModel: ServerList.CheckStatus.ViewModel) {
+        self.servers = viewModel.servers
+        self.tableview?.reloadData()
+    }
+    
     
     @objc func addServer() {
         var newServer = ""
@@ -101,7 +117,8 @@ class ServerListViewController: UIViewController, ServerListDisplayLogic {
             newServer = alertController.textFields?[0].text ?? ""
             
             if newServer.count >= 3 {
-                self.servers.append(newServer)
+                self.servers.append(Server(name: newServer, status: ""))
+                self.loadStatus()
                 self.saveServers()
                 self.tableview?.reloadData()
             } else {
@@ -130,15 +147,15 @@ extension ServerListViewController: UITableViewDelegate, UITableViewDataSource {
             fatalError("Invalid cell dequeue")
         }
         
-        cell.serverNameLabel?.text = servers[indexPath.row]
-        cell.serverStatusLabel?.text = servers[indexPath.row]
+        cell.serverNameLabel?.text = servers[indexPath.row].name
+        cell.serverStatusLabel?.text = servers[indexPath.row].status
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let alertController = UIAlertController(title: "Remover Servidor", message: nil, preferredStyle: .alert)
-        
         alertController.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: nil))
         alertController.addAction(UIAlertAction(title: "Remover", style: .default, handler: { (_) in
             

@@ -12,13 +12,23 @@
 
 import UIKit
 
+class Server: Codable {
+    public var name: String = ""
+    public var status: String = ""
+    
+    init(name: String, status: String) {
+        self.name = name
+        self.status = status
+    }
+}
+
 //MARK: - Enum
 enum ServerList {
     
     //MARK: - Save Server
     enum SaveServer {
         struct Request {
-            public var servers: [String]
+            public var servers: [Server]
         }
         
         struct Response {
@@ -32,17 +42,33 @@ enum ServerList {
     
     
     //MARK: - Save Server
-     enum LoadServer {
-         struct Request {
+    enum LoadServer {
+        struct Request {
+            
+        }
+        
+        struct Response {
+            public var servers: [Server]?
+        }
+        
+        struct ViewModel {
+            public var servers: [Server]?
+        }
+    }
     
-         }
-         
-         struct Response {
-             public var servers: [String]?
-         }
-         
-         struct ViewModel {
-             public var servers: [String]?
-         }
-     }
+    
+    //MARK: - Check Server Status
+    enum CheckStatus {
+        struct Request {
+            public var servers: [Server]
+        }
+        
+        struct Response {
+            public var servers:  [Server]
+        }
+        
+        struct ViewModel {
+            public var servers:  [Server]
+        }
+    }
 }

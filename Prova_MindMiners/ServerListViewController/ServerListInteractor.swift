@@ -16,6 +16,7 @@ import UIKit
 protocol ServerListBusinessLogic {
     func saveServer(request: ServerList.SaveServer.Request)
     func loadServer(request: ServerList.LoadServer.Request)
+    func checkServerStatus(request: ServerList.CheckStatus.Request)
 }
 
 
@@ -35,6 +36,14 @@ class ServerListInteractor: ServerListBusinessLogic {
         worker?.loadServer(completionHandler: { (servers) in
             let response = ServerList.LoadServer.Response(servers: servers)
             self.presenter?.presentServers(response: response)
+        })
+    }
+    
+    func checkServerStatus(request: ServerList.CheckStatus.Request) {
+        worker = ServerListWorker()
+        worker?.checkServerStatus(servers: request.servers, completionHandler: { (servers) in
+            let response = ServerList.CheckStatus.Response(servers: servers)
+            self.presenter?.presentStatus(response: response)
         })
     }
 }

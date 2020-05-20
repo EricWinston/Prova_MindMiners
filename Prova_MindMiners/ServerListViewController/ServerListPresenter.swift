@@ -15,6 +15,7 @@ import UIKit
 //MARK: - Protocol
 protocol ServerListPresentationLogic {
     func presentServers(response: ServerList.LoadServer.Response)
+    func presentStatus(response: ServerList.CheckStatus.Response)
 }
 
 //MARK: - Class
@@ -26,5 +27,12 @@ class ServerListPresenter: ServerListPresentationLogic {
     func presentServers(response: ServerList.LoadServer.Response) {
         let viewModel = ServerList.LoadServer.ViewModel(servers: response.servers)
         self.viewController?.showServers(viewModel: viewModel)
+    }
+    
+    func presentStatus(response: ServerList.CheckStatus.Response) {
+        DispatchQueue.main.async {
+            let viewModel = ServerList.CheckStatus.ViewModel(servers: response.servers)
+            self.viewController?.showStatus(viewModel: viewModel)
+        }
     }
 }

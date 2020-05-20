@@ -10,24 +10,63 @@
 //  see http://clean-swift.com
 //
 
+import Foundation
 import UIKit
 
 //MARK: - Class
 class ServerListWorker {
     
-    typealias LoadHandler = (([String]?) -> Void)
+    typealias LoadHandler = (([Server]?) -> Void)
+    typealias CheckStatusHandler = (([Server]) -> Void)
     
     //MARK: - Work
-    func saveServer(servers: [String]) {
-        let user = UserDefaults.standard
-        user.set(servers, forKey: "Servers")
+    func saveServer(servers: [Server]) {
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(servers)
+            UserDefaults.standard.set(data, forKey: "Servers")
+            
+        } catch {
+            print("Unable to Encode Array of Servers (\(error))")
+        }
     }
     
     func loadServer(completionHandler: LoadHandler?) {
-        let user = UserDefaults.standard
+        if let data = UserDefaults.standard.data(forKey: "Servers") {
+            do {
+                let decoder = JSONDecoder()
+                let servers = try decoder.decode([Server].self, from: data)
+                completionHandler?(servers)
+            } catch {
+                print("Unable to Decode Servers (\(error))")
+            }
+        }
+    }
     
-        if let servers = user.array(forKey: "Servers") {
-            completionHandler?(servers as? [String])
+    func checkServerStatus(servers: [Server],completionHandler: CheckStatusHandler?) {
+        
+        servers.forEach { (server) in
+            
+            guard let urlPath = URL(string: "https://\(server.name)") else { return }
+            let request: URLRequest = URLRequest(url: urlPath)
+            
+            let session = URLSession.shared
+            
+            let task = session.dataTask(with: request) { data, response, error in
+                if let httpResponse = response as? HTTPURLResponse {
+                    if ((200...299).contains(httpResponse.statusCode)) {
+                        server.status = "Online with code \(httpResponse.statusCode)"
+                    } else {
+                        server.status = "Offline with code \(httpResponse.statusCode)"
+                    }
+                } else {
+                    server.status = "Offline"
+                }
+                
+                completionHandler?(servers)
+            }
+            
+            task.resume()
         }
     }
 }
