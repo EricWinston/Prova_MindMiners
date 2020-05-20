@@ -12,7 +12,7 @@ Para mais clareza e organização do projeto, facilidade na hora de testar e tam
 
 ● Por quê seguir uma arquitetura como a Clean Architecture?
 
-A clean ela é muito interessante em projetos de grande escala, mas eu achei esse projeto muito simples pra arquitetura e tentei fazer ela encaixar nesse escopo pequeno. 
+A clean é muito interessante em projetos de grande escala, mas eu achei esse projeto muito simples pra arquitetura e tentei fazer ela encaixar nesse escopo pequeno. 
 
 ● Execução síncrona/assíncrona? Onde isso se encaixa no app?
 
